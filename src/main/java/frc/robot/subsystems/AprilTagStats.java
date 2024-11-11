@@ -127,4 +127,11 @@ public class AprilTagStats extends SubsystemBase {
         }
         return -1;
     }
+
+    public boolean hasTarget() {
+        if (m_arduCam.hasTargets() && pingCam()) {
+            return true;
+        }
+        return false;
+    }
 }
