@@ -36,11 +36,12 @@ public class AprilTagStats extends SubsystemBase {
 
     //Shuffleboard tab named vision, and 4 different widgets for yaw, pitch, tag id, and distance to a tag
     private ShuffleboardTab m_tab = Shuffleboard.getTab("Vision");
-    private GenericEntry m_yawEntry, m_pitchEntry, m_idEntry, m_distanceEntry;
+    private GenericEntry m_yawEntry, m_pitchEntry, m_idEntry, m_distanceEntry, m_tagStatusEntry;
 
     //Variables to hold all of the widget values
     private double m_yaw, m_pitch, m_distance;
     private int m_id;
+    private boolean m_tagStatus;
 
     //Generic starting position of the robot
     // private final Pose3d m_startPose3d = new Pose3d(12.5, 5.5, 0, new Rotation3d());
@@ -54,6 +55,7 @@ public class AprilTagStats extends SubsystemBase {
         m_pitchEntry = m_tab.add("pitch", m_pitch).getEntry();
         m_idEntry = m_tab.add("id", m_id).getEntry();
         m_distanceEntry = m_tab.add("distance", m_distance).getEntry();
+        m_tagStatusEntry = m_tab.add("Tag Viewed", m_tagStatus).getEntry();
         
         m_publisher = NetworkTableInstance.getDefault().getStructTopic("Current Robot Pose", Pose3d.struct).publish();
 
@@ -133,5 +135,14 @@ public class AprilTagStats extends SubsystemBase {
             return true;
         }
         return false;
+    }
+
+    public void setTagView(boolean tagFound) {
+        if (tagFound) {
+            m_tagStatusEntry.setBoolean(true);
+        }
+        else {
+            m_tagStatusEntry.setBoolean(false);
+        }
     }
 }

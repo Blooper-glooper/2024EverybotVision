@@ -12,6 +12,7 @@ import frc.robot.subsystems.AprilTagStats;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.apriltag.AprilTag;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 
@@ -45,6 +46,10 @@ public static CommandXboxController operatorController = new CommandXboxControll
       operatorController.b().whileTrue(new Shoot(m_shooter));
     }
     
+  }
+
+  public static void setRumble(double rumbleIntensity) {
+    driverController.getHID().setRumble(RumbleType.kBothRumble, rumbleIntensity);
   }
 
   

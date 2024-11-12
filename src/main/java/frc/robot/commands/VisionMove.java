@@ -23,6 +23,7 @@ public class VisionMove extends Command {
     @Override
     public void execute() {
         targetIsFound = aprilTagStats.hasTarget();
+        aprilTagStats.setTagView(targetIsFound);
         if (targetIsFound) {
             aprilTagStats.updateData();
             drivetrain.visionDrive(aprilTagStats.getDistance(), aprilTagStats.getYaw(), aprilTagStats.getID());
