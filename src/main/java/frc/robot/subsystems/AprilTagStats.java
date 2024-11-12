@@ -55,7 +55,7 @@ public class AprilTagStats extends SubsystemBase {
         m_pitchEntry = m_tab.add("pitch", m_pitch).getEntry();
         m_idEntry = m_tab.add("id", m_id).getEntry();
         m_distanceEntry = m_tab.add("distance", m_distance).getEntry();
-        m_tagStatusEntry = m_tab.add("Tag Viewed", m_tagStatus).getEntry();
+        m_tagStatusEntry = m_tab.add("Tag In View", m_tagStatus).getEntry();
         
         m_publisher = NetworkTableInstance.getDefault().getStructTopic("Current Robot Pose", Pose3d.struct).publish();
 
