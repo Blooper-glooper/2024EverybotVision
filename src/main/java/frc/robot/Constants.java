@@ -61,7 +61,7 @@ public final class Constants {
     }
 
     public static class distanceConstants {
-      public static final double goalMeterDistance = 3.0;
+      public static final double goalMeterDistance = 1.0;
     }
  }
 }

@@ -80,8 +80,8 @@ public class Drivetrain extends SubsystemBase {
     var color = DriverStation.getAlliance().get();
 
     if ((color == DriverStation.Alliance.Blue && id == 7) || (color == DriverStation.Alliance.Red && id == 4)) {
-      double driveSpeed = -drivePIDController.calculate(distance, distanceConstants.goalMeterDistance);
-      double rotationSpeed = turnPIDController.calculate(yaw, 0);
+      double driveSpeed = drivePIDController.calculate(distance, distanceConstants.goalMeterDistance);
+      double rotationSpeed = -turnPIDController.calculate(yaw, 0);
       differentialDrive.arcadeDrive(driveSpeed, rotationSpeed);
     }
   }
